@@ -1,16 +1,16 @@
 <h1>Sessions#new</h1>
 <p>Find me in app/views/sessions/new.html.erb</p>
 
-<%= form_with(scope: :user, url: sessions_path) do |form| %>
+<%= form_with url: sessions_path, local: true do |f| %>
   <div class="input-field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
   </div>
   <div class="input-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
   </div>
-  <div class="actions">
-    <%= form.submit %>
+  <div>
+    <%= f.submit %>
   </div>
 <% end %>
