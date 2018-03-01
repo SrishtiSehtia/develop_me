@@ -3,5 +3,4 @@
 
 <% @users.each do |user| %>
   User: <%= link_to (user.first_name + user.last_name), user_path(user) %>
-  <p> <%=user_path%> </p>
 <% end %>

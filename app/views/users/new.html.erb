@@ -3,6 +3,14 @@
 
 <%= form_with(model: @user) do |form| %>
   <div class="input-field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+  <div class="input-field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+  <div class="input-field">
     <%= form.label :email %>
     <%= form.text_field :email %>
   </div>

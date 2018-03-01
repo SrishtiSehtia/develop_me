@@ -15,13 +15,14 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash[:error] = 'Error'
-      redirect_to user_new_path
+      redirect_to new_user_path
     end
   end
 
   def show
+    p "redirecting to user profile........."
     user_id = params[:id]
-    @user = User.find_by_id(user_params)
+    @user = User.find(user_id)
   end
 
   def edit

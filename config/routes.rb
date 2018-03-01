@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "users#index"
 
   get '/login', to: "sessions#new"
   post '/sessions', to: 'sessions#create'
