@@ -9,6 +9,38 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Logo</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+             <li <% link_to "Home", root_path %> </li>
+            <li><a href="/users">Find a Mentor</a></li>
+            <% if current_user %>
+              <li> <% link_to "Profile", user_path %> </li>
+              <li><% link_to "Sign Out", signout_path %></li>
+            <% else %>
+              <li> <% link_to "Log In", login_path %> </li>
+              <li><% link_to "Sign Up", signup_path %></li>
+            <% end %>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li> <% link_to "Home", root_path %> </li>
+            <li><a href="/users">Find a Mentor</a></li>
+            <% if current_user %>
+              <li> <% link_to "Profile", user_path %> </li>
+              <li><% link_to "Sign Out", signout_path %></li>
+            <% else %>
+              <li> <% link_to "Log In", login_path %> </li>
+              <li><% link_to "Sign Up", signup_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
