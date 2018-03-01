@@ -6,8 +6,11 @@ class SessionsController < ApplicationController
   def create
     @user = User.confirm(session_params)
     if @user
+      p "found user......"
       login(@user)
-      redirect_to @user
+      p "logged in worked......"
+      redirect_to user_path(@user)
+      return
     else
       flash[:error] = 'Incorrect email or password'
       redirect_to login_path
