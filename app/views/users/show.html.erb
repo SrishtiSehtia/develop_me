@@ -4,6 +4,8 @@
 First name: <%= @user.first_name %>
 last_name: <%= @user.last_name %>
 
+<%= link_to "Unanswered Questions", user_unanswered_questions_path(@user),class:"btn" %>
+
 <%= form_with(scope: :questions, url: user_questions_path(@user) ,local: true) do |form| %>
   <div class="input-field">
     <%= form.label :question %>
@@ -15,6 +17,8 @@ last_name: <%= @user.last_name %>
 <% end %>
 
 
-<% @user.questions.each do |question| %>
+<% @user.questions.where.not(answer: nil).each do |question| %>
   <div class="section"> <%= question.question %> </div>
+<% end.empty? and begin %>
+  <h3> There are no questions at this time</h3>
 <% end %>

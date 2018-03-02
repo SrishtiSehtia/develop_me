@@ -12,4 +12,8 @@ module SessionsHelper
   def logout
     @current_user = session[:user_id] = nil
   end
+
+  def is_signed_in?(user)
+    current_user and (current_user.id === user.id)
+  end
 end
