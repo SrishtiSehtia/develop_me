@@ -3,3 +3,18 @@
 
 First name: <%= @user.first_name %>
 last_name: <%= @user.last_name %>
+
+<%= form_with(scope: :questions, url: user_questions_path(@user) ,local: true) do |form| %>
+  <div class="input-field">
+    <%= form.label :question %>
+    <%= form.text_field :question %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<% @user.questions.each do |question| %>
+  <div class="section"> <%= question.question %> </div>
+<% end %>
