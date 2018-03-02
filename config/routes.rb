@@ -5,13 +5,9 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  get    '/users'     => 'users#index'
-  post   '/users'      =>'users#create'
-  get    '/users/new' => 'users#new'
-  get    '/users/:id/edit' => 'users#edit'
-  get    '/users/:id' =>     'users#show', as: 'user'
-  put    '/users/:id' =>     'users#update'
-  delete '/users/:id' =>     'users#destroy'
+  resources :users do
+    resources :questions
+  end
 
 
 end
