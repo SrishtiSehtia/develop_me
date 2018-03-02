@@ -4,6 +4,16 @@
 
 <h1> Unanswered Questions </h1>
 
+
 <% @unanswered_questions.each do |question| %>
-  Question: <%= question.question %><br/>
+<p> <%= question.question%> </p>
+  <%= form_with(model: question, url: user_question_path(@user,question), local:true) do |form| %>
+    <div class="input-field">
+      <%= form.label :answer %>
+      <%= form.text_field :answer %>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
