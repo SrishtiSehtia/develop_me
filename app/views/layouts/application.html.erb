@@ -10,110 +10,19 @@
 
   <body>
 
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-             <li><%= link_to "Home", root_path %> </li>
-            <li><a href="/users">Find a Mentor</a></li>
-            <% if current_user %>
-              <li> <%= link_to "Profile", user_path(current_user) %> </li>
-              <li><%= link_to "Sign Out", logout_path %></li>
-            <% else %>
-              <li> <%= link_to "Log In", login_path %> </li>
-              <li><%= link_to "Sign Up", new_user_path %></li>
-            <% end %>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li> <%= link_to "Home", root_path %> </li>
-            <li><a href="/users">Find a Mentor</a></li>
-            <% if current_user %>
-              <li> <%= link_to "Profile", user_path(current_user) %> </li>
-              <li><%= link_to "Sign Out", logout_path %></li>
-            <% else %>
-              <li> <%= link_to "Log In", login_path %> </li>
-              <li><%= link_to "Sign Up", new_user_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <%= render "nav" %>
+<!--
+
+  <div class="parallax">
+    <img src="parallax-gradient-image.jpg" alt="Unsplashed background img 1" style="transform: translate3d(-50%, 218.858px, 0px); opacity: 1;">
+  </div> -->
 
     <main>
       <%= yield %>
     </main>
 
 
-    <div class="container">
-      <div class="section"> -->
-        <!-- This the Icon Section -->
-        <div class="row">
-          <div class="col s12 m4">
-            <div class"icon-block">
-              <h2 class="center light-blue-text">
-                  <i class="material-icons">flash_on</i>
-              </h2>
-              <h5 class="center">Speeds up Development</h5>
-              <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-            </div>
-          </div>
-          <div class="col s12 m4">
-            <div class="icon-block"></div>
-              <h2 class="center light-blue-text">
-                <i class="material-icons">group</i>
-              </h2>
-              <h5 class="center">User Experience Focused</h5>
-              <p class="light">
-                By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.
-              </p>
-            </div>
-          </div>
-          <div class="col s12 m4">
-            <div class="icon-block">
-              <h2 class="center-light-blue-text">
-                <i class="material-icons">settings</i>
-              </h2>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    <br>
-    <br>
-    </div>
-
-
-    <footer class="page-footer blue">
-      <div class="container"></div>
-        <div class="row"></div>
-          <div class="col 16 s12">
-            <h5 class="white-text">Develop Me Bio</h5>
-            <p class="grey-text text-lighten-4">
-              "We are a team of Web Developers at General Assembly working on this application development project."
-            </p>
-          </div>
-
-          <div class="col 13 s12">Text</div>
-            <h5 class="white-text">Settings</h5>
-            <ul></ul>
-          </div>
-          <div class="col 13 s12">Text</div>
-            <h5 class="white-text">Connect</h5>
-            <ul></ul>
-          </div>
-
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-          © 2018 Copyright Developed by Team ShredX
-          <a class="orange-text text-lighten-3" href="http://github.com"></a>
-        </div>
-      </div>
-    </footer>
-
+    <%= render "footer" %>
   <!-- Scripts -->
   <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"> -->
   <!-- </script> -->
