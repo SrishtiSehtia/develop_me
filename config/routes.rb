@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   post "/sessions", to: "sessions#create"
 
   resources :users do
-    resources :questions
+    resources :questions, except: [:new, :index]
+    get "/unanswered_questions", to: "questions#unanswered_questions"
+    # resources :questions
   end
 
 end
