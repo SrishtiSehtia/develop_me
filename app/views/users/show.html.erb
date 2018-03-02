@@ -18,7 +18,10 @@ last_name: <%= @user.last_name %>
 
 
 <% @user.questions.where.not(answer: nil).each do |question| %>
-  <div class="section"> <%= question.question %> </div>
+  <div class="section">
+    <%= question.question %>
+    <%= question.answer %> 
+  </div>
 <% end.empty? and begin %>
   <h3> There are no questions at this time</h3>
 <% end %>

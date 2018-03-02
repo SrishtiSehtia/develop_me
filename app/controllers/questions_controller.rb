@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   # this will be the access point to unanswered questions
   def unanswered_questions
     if is_signed_in? @user
-      @unanswered_questions = @user.questions
+      @unanswered_questions = @user.questions.where(answer: nil)
     else
       flash[:error] = "You do not have permission to access this page!!!"
       redirect_to root_path
@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
+    @question = Question.new(params.require(:questions).permit(:question))
     @question.user = @user
     if @question.save
       flash[:notice] = "You question has been submitted"
@@ -25,6 +25,14 @@ class QuestionsController < ApplicationController
     end
       redirect_to user_path(@user)
     # p @question
+  end
+
+  def update
+    data = params.require(:question).permit(:answer)
+    @question = Question.find_by_id(params[:id])
+    if @question.update_attribute(:answer, data[:answer])
+      redirect_to user_unanswered_questions_path
+    end
   end
 
   # maybe
@@ -39,7 +47,7 @@ class QuestionsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  def question_params
-    params.require(:questions).permit(:question)
-  end
+  # def question_params
+  #   params.require(:questions).permit(:question)
+  # end
 end
