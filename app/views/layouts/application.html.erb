@@ -9,38 +9,27 @@
   </head>
 
   <body>
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-             <li><%= link_to "Home", root_path %> </li>
-            <li><a href="/users">Find a Mentor</a></li>
-            <% if current_user %>
-              <li> <%= link_to "Profile", user_path(current_user) %> </li>
-              <li><%= link_to "Sign Out", logout_path %></li>
-            <% else %>
-              <li> <%= link_to "Log In", login_path %> </li>
-              <li><%= link_to "Sign Up", new_user_path %></li>
-            <% end %>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li> <%= link_to "Home", root_path %> </li>
-            <li><a href="/users">Find a Mentor</a></li>
-            <% if current_user %>
-              <li> <%= link_to "Profile", user_path(current_user) %> </li>
-              <li><%= link_to "Sign Out", logout_path %></li>
-            <% else %>
-              <li> <%= link_to "Log In", login_path %> </li>
-              <li><%= link_to "Sign Up", new_user_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <div class="container">
+
+    <%= render "nav" %>
+<!--
+
+  <div class="parallax">
+    <img src="parallax-gradient-image.jpg" alt="Unsplashed background img 1" style="transform: translate3d(-50%, 218.858px, 0px); opacity: 1;">
+  </div> -->
+
+    <main>
       <%= yield %>
-    </div>
+    </main>
+
+
+    <%= render "footer" %>
+  <!-- Scripts -->
+  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"> -->
+  <!-- </script> -->
+  <!-- <script src="../../bin/materialize.js"></script> -->
+  <!-- <script src="js/init.js"></script> [Don't Know if this even goes in here or is correct script src] -->
+
+  <div class="sidenav-overlay"></div>
+  <div class="drag-target"></div>
   </body>
 </html>
