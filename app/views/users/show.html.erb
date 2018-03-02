@@ -4,21 +4,26 @@
 First name: <%= @user.first_name %>
 last_name: <%= @user.last_name %>
 
-<%= link_to "Unanswered Questions", user_unanswered_questions_path(@user),class:"btn" %>
-
-<%= form_with(scope: :questions, url: user_questions_path(@user) ,local: true) do |form| %>
-  <div class="input-field">
-    <%= form.label :question %>
-    <%= form.text_field :question %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<% if current_user %>
+  <%= link_to "Unanswered Questions", user_unanswered_questions_path(@user),class:"btn" %>
+<% else %>
+  <%= form_with(scope: :questions, url: user_questions_path(@user) ,local: true) do |form| %>
+    <div class="input-field">
+      <%= form.label :question %>
+      <%= form.text_field :question %>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
 
 
 <% @user.questions.where.not(answer: nil).each do |question| %>
-  <div class="section"> <%= question.question %> </div>
+  <div class="section">
+    <%= question.question %>
+    <%= question.answer %>
+  </div>
 <% end.empty? and begin %>
   <h3> There are no questions at this time</h3>
 <% end %>
