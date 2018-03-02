@@ -28,9 +28,9 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    data = params.require(:question).permit(:answer)
     @question = Question.find_by_id(params[:id])
-    if @question.update_attribute(:answer, data[:answer])
+    data = params.require(:question).permit(:answer)
+    if ( @question.update_attribute(:answer, data[:answer]) )
       redirect_to user_unanswered_questions_path
     end
   end
