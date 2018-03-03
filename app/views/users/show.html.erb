@@ -1,29 +1,50 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 
-First name: <%= @user.first_name %>
-last_name: <%= @user.last_name %>
-
-<% if current_user %>
-  <%= link_to "Unanswered Questions", user_unanswered_questions_path(@user),class:"btn" %>
-<% else %>
-  <%= form_with(scope: :questions, url: user_questions_path(@user) ,local: true) do |form| %>
-    <div class="input-field">
-      <%= form.label :question %>
-      <%= form.text_field :question %>
-    </div>
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
-<% end %>
-
-
-<% @user.questions.where.not(answer: nil).each do |question| %>
+<div class="container">
   <div class="section">
-    <%= question.question %>
-    <%= question.answer %>
+    <div class="section">
+      <h2 class="center-align"><%= @user.first_name %> <%= @user.last_name %></h2>
+    </div>
+    <div class="divider"></div>
+
+    <% if is_signed_in? @user %>
+      <div class="section">
+        <%= link_to "Unanswered Questions", user_unanswered_questions_path(@user),class:"btn" %>
+      </div>
+    <% else %>
+      <h4 class="teal-text">Having a problem?</h4>
+      <p> Ask a question to <%= @user.first_name %> and let him personally respond to you </p>
+      <%= form_with(scope: :questions, url: user_questions_path(@user) ,local: true) do |form| %>
+        <div class="row">
+          <div class="col s11">
+            <div class="input-field">
+              <%= form.label :question  %>
+              <%= form.text_field :question %>
+            </div>
+          </div>
+          <div class="input-field col s1">
+            <%= form.submit "Ask", class:" waves-effect waves-light btn" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <ul class="collapsible popout" data-collapsible="accordion">
+      <% @user.questions.where.not(answer: nil).each do |question| %>
+        <li>
+          <div class="collapsible-header teal-text"><%= question.question %></div>
+          <div class="collapsible-body"><span><%= question.answer %></span></div>
+        </li>
+      <% end.empty? and begin %>
+        <h3> There are no questions at this time</h3>
+      <% end %>
+    </ul>
   </div>
-<% end.empty? and begin %>
-  <h3> There are no questions at this time</h3>
+</div>
+
+<% if is_signed_in? @user %>
+  <script type="text/javascript">
+    $(function(){
+      Materialize.toast('You have <%= @user.questions.where(answer: nil).count %> questions that need to be answered', 8000)
+    });
+  </script>
 <% end %>
+
