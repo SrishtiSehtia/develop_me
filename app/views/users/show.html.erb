@@ -4,7 +4,7 @@
 First name: <%= @user.first_name %>
 last_name: <%= @user.last_name %>
 
-<% if current_user %>
+<% if is_signed_in? @user %>
   <%= link_to "Unanswered Questions", user_unanswered_questions_path(@user),class:"btn" %>
 <% else %>
   <%= form_with(scope: :questions, url: user_questions_path(@user) ,local: true) do |form| %>
