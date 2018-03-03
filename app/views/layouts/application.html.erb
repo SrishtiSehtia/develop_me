@@ -6,28 +6,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   </head>
 
   <body>
 
-    <%= render "nav" %>
-<!--
-
-  <div class="parallax">
-    <img src="parallax-gradient-image.jpg" alt="Unsplashed background img 1" style="transform: translate3d(-50%, 218.858px, 0px); opacity: 1;">
-  </div> -->
+    <%= render "layouts/nav" %>
 
     <main>
       <%= yield %>
     </main>
 
-
-    <%= render "footer" %>
-  <!-- Scripts -->
-  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"> -->
-  <!-- </script> -->
-  <!-- <script src="../../bin/materialize.js"></script> -->
-  <!-- <script src="js/init.js"></script> [Don't Know if this even goes in here or is correct script src] -->
+    <%= render "layouts/footer" %>
 
   <div class="sidenav-overlay"></div>
   <div class="drag-target"></div>
