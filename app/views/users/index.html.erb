@@ -1,57 +1,67 @@
-<div class="header" style="background-image: url('/assets/images/stars.jpg');">
+<body>
+  <div class="header">
 
 
-  <div class="header-wrapper db">
-    <a href="#" class="button-collapse">
-      <i class="material-icons">menu</i>
-    </a>
-    <div class="header-title">
-      <h1 style="color:white; text-align:center;">Mentors</h1>
-      <p style="color:white; text-align:center;">Find me in app/views/users/index.html.erb</p>
-    </div>
-  </div>
-  <!-- Fixed Masonry Filters -->
-  <div class="categories-wrapper af lighten-1">
-  </div>
+    <div class="header-wrapper db">
+      <div class="header-title" style="text-align:center;">
+        <h1 class="blue-text">Mentors+</h1>
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='dropdown1' style="text-align:center;">Filter By</a>
 
-</div>
-  <!-- Gallery -->
-<div>
-  <div id="gallery">
-    <div class="profile-container">
-
-      <div class="profile-cards" style="display:inline-block;">
-        <div class="gallery-item" >
-
-          <div class="row" style="display:inline-block;">
-          <% @users.each do |user| %>
-          <!--  each user layout-->
-
-                <div class="col s3 m3">
-                  <div class="card blue-grey darken-1" style="height: 500px;">
-
-                    <div class="card-image">
-                      <img src="/assets/images/empty_profile.jpg">
-                    </div>
-
-                    <div class="card-content white-text">
-                      <span class="card-title"><%= link_to (user.first_name + " " + user.last_name), user_path(user) %></span>
-                      <p>A little about me...</p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#">This is a link</a>
-                      <a href="#">This is a link</a>
-                    </div>
-                  </div>
-                </div>
-          <% end %>
-        </div>
-        </div>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li><a href="#!">three</a></li>
+          <li><a href="#!">four</a></li>
+          <li><a href="#!">five</a></li>
+        </ul>
 
       </div>
     </div>
+    <!-- Fixed Masonry Filters -->
+    <div class="categories-wrapper af lighten-1">
+    </div>
+
   </div>
-</div>
+    <!-- Gallery -->
+  <div>
+    <div id="gallery">
+      <div class="profile-container" style="display:flex; justify-content:space-around;">
+
+        <div class="profile-cards">
+          <div class="gallery-item" >
+
+            <div class="row" style="display:inline-block;">
+            <% @users.each do |user| %>
+            <!--  each user layout-->
+
+                  <div class="col s12 m3">
+                    <div class="card blue-grey darken-1">
+
+                      <div class="card-image">
+                        <img src="/assets/images/empty_profile.jpg">
+                      </div>
+
+                      <div class="card-content white-text">
+                        <span class="card-title"><%= link_to (user.first_name + " " + user.last_name), user_path(user) %></span>
+                        <p>A little about me...</p>
+                      </div>
+                      <div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                      </div>
+                    </div>
+                  </div>
+            <% end %>
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 <!--
 user{
 first_name
