@@ -31,6 +31,12 @@
   width: 175px;
   height: 175px;
 }
+
+nav i,
+nav svg {
+  font-size: 30px !important;
+}
+.navbar-fixed { z-index: 9999; }
 // nav {
 //   background-color: black;
 //   color: white;
