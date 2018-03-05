@@ -1,0 +1,10 @@
+<ul class="collapsible popout" data-collapsible="accordion">
+  <% question_list.each do |question| %>
+    <li>
+      <div class="collapsible-header teal-text"><%= question.question %></div>
+      <div class="collapsible-body"><span><%= question.answer %></span></div>
+    </li>
+  <% end.empty? and begin %>
+    <h3> There are no questions at this time</h3>
+  <% end %>
+</ul>
