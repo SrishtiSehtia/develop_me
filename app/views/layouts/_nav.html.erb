@@ -5,7 +5,7 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
          <li><%= link_to "Home", root_path %> </li>
-        <li><a href="/users">Find a Mentor</a></li>
+        <li><a href="/users">Mentors</a></li>
         <% if current_user %>
           <li> <%= link_to "Profile", user_path(current_user) %> </li>
           <li><%= link_to "Sign Out", logout_path %></li>
@@ -16,7 +16,7 @@
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li> <%= link_to "Home", root_path %> </li>
-        <li><a href="/users">Find a Mentor</a></li>
+        <li><a href="/users">Mentors</a></li>
         <% if current_user %>
           <li> <%= link_to "Profile", user_path(current_user) %> </li>
           <li><%= link_to "Sign Out", logout_path %></li>

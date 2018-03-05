@@ -14,8 +14,8 @@
   <%= render "layouts/nav" %>
 
   <% flash.each do |name, msg| %>
-    <% name %>
-    <div class="card-panel <%= flash_color_for(name)%> lighten-5 red-text text-darken-3"> <%= msg %> </div>
+    <% color = flash_color_for(name) %>
+    <div class="card-panel <%= color %> lighten-5 <%= color %>-text text-darken-3"> <%= msg %> </div>
   <% end %>
 
   <main>
