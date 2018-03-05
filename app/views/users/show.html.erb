@@ -26,9 +26,9 @@
         </div>
       <% end %>
     <% end %>
-    <%= render "questions/question_list", question_list: @page ? @page.elements : [] %>
+    <%= render "questions/question_list", question_list: @page %>
 
-    <%= render "pagination/pagination", page_number: @page_number ,user:@user ,total_pages: @pages.total_pages %>
+    <%= render "pagination/pagination", page_number: @page_number , url: @url ,total_pages: @pages.total_pages %>
   </div>
 </div>
 

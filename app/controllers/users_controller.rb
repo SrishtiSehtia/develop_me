@@ -1,11 +1,15 @@
-require "simply_paginate"
-
 class UsersController < ApplicationController
-
-  include SimplyPaginate
+  before_action :set_page, only: [:index, :show]
 
   def index
     @users = User.all
+
+    @pages = Paginator.new(@users, 3)
+    @page = @pages[ @page_number ]
+    @page = @page ? @page.elements : []
+
+    @url = Addressable::Template.new( "/users{?page}")
+
   end
 
   def new
@@ -25,13 +29,16 @@ class UsersController < ApplicationController
 
   def show
     user_id = params[:id]
-    @page_number = params[:page].nil? ? 1 : params[:page].to_i
+
     @user = User.find(user_id)
     @logged_in = is_signed_in? @user
     @question_list = @user.questions.where.not(answer: nil)
 
-    @pages = Paginator.new(@question_list, 2)
+    @pages = Paginator.new(@question_list, 5)
     @page = @pages[ @page_number ]
+    @page = @page ? @page.elements : []
+
+    @url = Addressable::Template.new( "#{user_path(@user)}{?page}")
 
   end
 
@@ -45,6 +52,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def set_page
+    @page_number = params[:page].nil? ? 1 : params[:page].to_i
   end
 
 end
