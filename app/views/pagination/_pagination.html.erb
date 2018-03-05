@@ -1,21 +1,23 @@
-<ul class="pagination center">
-  <% if (page_number - 1) > 0 %>
-    <li>
-      <%= link_to user_path(user, page: page_number - 1) do %>
-        <i class="fa fa-angle-left"></i>
-      <% end %>
-    </li>
-  <% end %>
+<% if total_pages > 1 %>
+  <ul class="pagination center">
+    <% if (page_number - 1) > 0 %>
+      <li>
+        <%= link_to url.expand(page: page_number - 1).to_s do %>
+          <i class="fa fa-angle-left"></i>
+        <% end %>
+      </li>
+    <% end %>
 
-  <% (1..total_pages).each do |number| %>
-    <li class="waves-effect"><%= link_to number, user_path(user, page: number) %></li>
-  <% end %>
+    <% (1..total_pages).each do |number| %>
+      <li class="waves-effect"><%= link_to number, url.expand(page: number).to_s %></li>
+    <% end %>
 
-  <% if (page_number + 1) <= total_pages %>
-    <li>
-      <%= link_to user_path(user, page: page_number + 1) do %>
-        <i class="fa fa-angle-right"></i>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+    <% if (page_number + 1) <= total_pages %>
+      <li>
+        <%= link_to url.expand(page: page_number + 1).to_s do %>
+          <i class="fa fa-angle-right"></i>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
