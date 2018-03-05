@@ -13,6 +13,11 @@
 
   <%= render "layouts/nav" %>
 
+  <% flash.each do |name, msg| %>
+    <% name %>
+    <div class="card-panel <%= flash_color_for(name)%> lighten-5 red-text text-darken-3"> <%= msg %> </div>
+  <% end %>
+
   <main>
     <%= yield %>
   </main>

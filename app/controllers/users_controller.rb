@@ -32,7 +32,6 @@ class UsersController < ApplicationController
     @question_list = @user.questions.where.not(answer: nil)
 
     @pages = Paginator.new(@question_list, 2)
-
     @page = @pages[ @page_number ]
 
   end
