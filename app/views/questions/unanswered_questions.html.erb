@@ -1,12 +1,7 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
-
-
 <h1> Unanswered Questions </h1>
 
-
 <% @unanswered_questions.each do |question| %>
-<p> <%= question.question%> </p>
+  <p> <%= question.question%> </p>
   <%= form_with(model: question, url: user_question_path(@user,question), local:true) do |form| %>
     <div class="input-field">
       <%= form.label :answer %>

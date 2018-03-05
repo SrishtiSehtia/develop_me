@@ -18,13 +18,12 @@ class UsersController < ApplicationController
       login(@user)
       redirect_to @user
     else
-      flash[:error] = 'Error'
+      flash[:error] = 'There was a problem with Signing you up. Please try again later.'
       redirect_to new_user_path
     end
   end
 
   def show
-    p "redirecting to user profile........."
     user_id = params[:id]
     @page_number = params[:page].nil? ? 1 : params[:page].to_i
     @user = User.find(user_id)

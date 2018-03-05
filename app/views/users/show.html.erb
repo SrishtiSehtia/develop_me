@@ -1,7 +1,7 @@
 <div class="container">
   <div class="section">
     <div class="section">
-      <h2 class="center-align"><%= @user.first_name %> <%= @user.last_name %></h2>
+      <h2 class="center-align"><%= @user.full_name %></h2>
     </div>
     <div class="divider"></div>
 
@@ -32,11 +32,11 @@
   </div>
 </div>
 
-
-<% if @logged_in && params[:page].nil? %>
+<% count = @user.questions.where(answer: nil).count %>
+<% if @logged_in && params[:page].nil? && !count.zero? %>
   <script type="text/javascript">
     $(function(){
-      Materialize.toast('You have <%= @user.questions.where(answer: nil).count %> questions that need to be answered', 8000)
+      Materialize.toast('You have <%= count %> questions that need to be answered', 8000)
     });
   </script>
 <% end %>

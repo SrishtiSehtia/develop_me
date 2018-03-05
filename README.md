@@ -8,6 +8,7 @@
 ## Technologies
 * Materialize
 * jQuery
+* font-awesome
 * jquery.validate
 
 ***
