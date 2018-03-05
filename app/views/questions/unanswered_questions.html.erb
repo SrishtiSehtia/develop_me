@@ -1,19 +1,37 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
-
-
-<h1> Unanswered Questions </h1>
-
-
-<% @unanswered_questions.each do |question| %>
-<p> <%= question.question%> </p>
-  <%= form_with(model: question, url: user_question_path(@user,question), local:true) do |form| %>
-    <div class="input-field">
-      <%= form.label :answer %>
-      <%= form.text_field :answer, required:true, class:'validate' %>
+<!--breadcrumbs start-->
+<div id="breadcrumbs-wrapper" class="grey lighten-3">
+  <div class="container" style="text-align:center;">
+    <div class="row">
+      <div class="col s12">
+        <h3 class="breadcrumbs-title grey-text text-darken-2"><i>People Are Asking...</i></h3>
+        <a href="#!" class="breadcrumb teal-text">By Date</a>
+        <a href="#" class="breadcrumb teal-text">By Topic</a>
+        <a href="#" class="breadcrumb teal-text">By Frequency</a>
+      </div>
     </div>
-    <div class="actions">
-      <%= form.submit %>
-    </div>
+  </div>
+</div>
+<!--breadcrumbs end-->
+
+<div class="intro">
+  <p class="grey-text text-darken-2" style="text-align:center;"><i>You will find the questions people have personally asked you listed below. Click on the question to answer. Questions will not be posted on your profile until they have been answered.</i></p>
+</div>
+
+<ul class="collapsible popout" data-collapsible="accordion">
+  <% @unanswered_questions.each do |question| %>
+    <li>
+      <div class="collapsible-header grey-text text-darken-2"> <%= question.question%> </div>
+      <div class="collapsible-body">
+        <%= form_with(model: question, url: user_question_path(@user,question), local:true) do |form| %>
+          <div class="input-field">
+            <%= form.label :answer %>
+            <%= form.text_field :answer %>
+          </div>
+          <div class="actions" style="text-align:center;">
+            <%= form.submit "Submit Answer", class: "waves-effect waves-light btn"%>
+          </div>
+        <% end %>
+      </div>
+    </li>
   <% end %>
-<% end %>
+</ul>
