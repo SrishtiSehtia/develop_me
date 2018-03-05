@@ -17,6 +17,7 @@
 // require_tree .
 
 $(function(){
+  $(".button-collapse").sideNav();
 
   var is_page = function(path){ return location.pathname.indexOf(path) >= 0 }
   var data = {};
