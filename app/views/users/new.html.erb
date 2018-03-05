@@ -6,26 +6,26 @@
     <div class="row">
       <div class="input-field col s12 m6">
         <%= form.label :first_name %>
-        <%= form.text_field :first_name %>
+        <%= form.text_field :first_name, required: true, class:"validate" %>
       </div>
 
       <div class="input-field col s12 m6">
         <%= form.label :last_name %>
-        <%= form.text_field :last_name %>
+        <%= form.text_field :last_name, required: true, class:"validate" %>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
         <%= form.label :email %>
-        <%= form.text_field :email %>
+        <%= form.email_field :email, required: true, class:"validate" %>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
         <%= form.label :password %>
-        <%= form.password_field :password %>
+        <%= form.password_field :password, required: true, minlength: 5, class:"validate" %>
       </div>
     </div>
 

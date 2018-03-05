@@ -13,4 +13,33 @@
 //= require rails-ujs
 //= require jquery
 //= require materialize
-//= require_tree .
+//= require validate
+// require_tree .
+
+$(function(){
+
+  var is_page = function(path){ return location.pathname.indexOf(path) >= 0 }
+  var data = {};
+
+  if( is_page("/login") ){
+    data = {
+      email: { required: true, email: true },
+      password: {required: true, minlength: 5}
+    }
+  } else if( is_page("/users/new") ){
+    data = {
+      first_name:{ required: true, minlength: 2 },
+      last_name: { required: true, minlength: 2},
+      email: { required: true, email: true },
+      password: {required: true, minlength: 5}
+    }
+  }
+
+  $("form").validate({
+    rules: data,
+    errorElement : 'div',
+    errorPlacement: function(error, element) {
+      error.addClass('error').insertAfter(element);
+    }
+  })
+});

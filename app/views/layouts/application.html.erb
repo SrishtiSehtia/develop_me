@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DevelopMe</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>DevelopMe</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</head>
 
-  <body>
+<body>
 
-    <%= render "layouts/nav" %>
+  <%= render "layouts/nav" %>
 
-    <main>
-      <%= yield %>
-    </main>
-    
-    <%= render "layouts/footer" %>
-    
+  <% flash.each do |name, msg| %>
+    <% name %>
+    <div class="card-panel <%= flash_color_for(name)%> lighten-5 red-text text-darken-3"> <%= msg %> </div>
+  <% end %>
+
+  <main>
+    <%= yield %>
+  </main>
+
+  <%= render "layouts/footer" %>
+
   <div class="sidenav-overlay"></div>
   <div class="drag-target"></div>
-  </body>
+</body>
 </html>

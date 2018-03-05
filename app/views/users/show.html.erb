@@ -5,9 +5,9 @@
     </div>
     <div class="divider"></div>
 
-    <% if is_signed_in? @user %>
+    <% if @logged_in %>
       <div class="section">
-        <%= link_to "Unanswered Questions", user_unanswered_questions_path(@user),class:"btn" %>
+        <%= link_to "Unanswered Questions", user_unanswered_questions_path(@user), class:"btn" %>
       </div>
     <% else %>
       <h4 class="teal-text">Having a problem?</h4>
@@ -17,7 +17,7 @@
           <div class="col s11">
             <div class="input-field">
               <%= form.label :question  %>
-              <%= form.text_field :question %>
+              <%= form.text_field :question, required:true, class:"validate" %>
             </div>
           </div>
           <div class="input-field col s1">
@@ -26,20 +26,14 @@
         </div>
       <% end %>
     <% end %>
-    <ul class="collapsible popout" data-collapsible="accordion">
-      <% @user.questions.where.not(answer: nil).each do |question| %>
-        <li>
-          <div class="collapsible-header teal-text"><%= question.question %></div>
-          <div class="collapsible-body"><span><%= question.answer %></span></div>
-        </li>
-      <% end.empty? and begin %>
-        <h3> There are no questions at this time</h3>
-      <% end %>
-    </ul>
+    <%= render "questions/question_list", question_list: @page ? @page.elements : [] %>
+
+    <%= render "pagination/pagination", page_number: @page_number ,user:@user ,total_pages: @pages.total_pages %>
   </div>
 </div>
 
-<% if is_signed_in? @user %>
+
+<% if @logged_in && params[:page].nil? %>
   <script type="text/javascript">
     $(function(){
       Materialize.toast('You have <%= @user.questions.where(answer: nil).count %> questions that need to be answered', 8000)

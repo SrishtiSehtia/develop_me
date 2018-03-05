@@ -8,6 +8,4 @@ class User < ApplicationRecord
     @user ? @user.authenticate(params[:password]) : false
   end
 
-  has_many :questions
-  
 end
