@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    @pages = Paginator.new(@users, 3)
+    @pages = Paginator.new(@users, 12)
     @page = @pages[ @page_number ]
     @page = @page ? @page.elements : []
 
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.welcome_email(@user).deliver_now
       login(@user)
       redirect_to @user
     else
