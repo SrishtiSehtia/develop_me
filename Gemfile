@@ -51,3 +51,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'materialize-sass'
 gem 'simply_paginate'
+gem 'addressable'
+gem 'ffaker'

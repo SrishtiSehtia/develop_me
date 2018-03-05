@@ -4,7 +4,14 @@ class QuestionsController < ApplicationController
   # this will be the access point to unanswered questions
   def unanswered_questions
     if is_signed_in? @user
+      @page_number = params[:page].nil? ? 1 : params[:page].to_i
       @unanswered_questions = @user.questions.where(answer: nil)
+      @pages = Paginator.new(@unanswered_questions, 5)
+      @page = @pages[ @page_number ]
+
+      @page = @page ? @page.elements : []
+      @url = Addressable::Template.new("#{user_unanswered_questions_path(@user)}{?page}")
+
     else
       flash[:error] = "You do not have permission to access this page!!!"
       redirect_to root_path

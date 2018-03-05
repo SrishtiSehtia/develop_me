@@ -1,5 +1,5 @@
 <!--breadcrumbs start-->
-<div id="breadcrumbs-wrapper" class="grey lighten-3">
+<div id="breadcrumbs-wrapper" class="grey lighten-3 section">
   <div class="container" style="text-align:center;">
     <div class="row">
       <div class="col s12">
@@ -18,7 +18,7 @@
 </div>
 
 <ul class="collapsible popout" data-collapsible="accordion">
-  <% @unanswered_questions.each do |question| %>
+  <% @page.each do |question| %>
     <li>
       <div class="collapsible-header grey-text text-darken-2"> <%= question.question%> </div>
       <div class="collapsible-body">
@@ -35,3 +35,6 @@
     </li>
   <% end %>
 </ul>
+<div class="section">
+  <%= render "pagination/pagination", page_number: @page_number , url: @url ,total_pages: @pages.total_pages %>
+</div>
