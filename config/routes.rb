@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     # resources :questions
   end
 
+  post "/contact_us", to: "main#contact_us"
+
 end

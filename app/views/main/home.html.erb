@@ -29,7 +29,6 @@
 
 <div class="container">
   <div class="section">
-      <!-- This the Icon Section -->
     <div class="row">
       <div class="col s12 m4">
         <div class="icon-block">
@@ -66,67 +65,66 @@
 </div>
 
 <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">.Ω</h5>
-        </div>
+  <div class="parallax"><%= image_tag "/assets/images/web_dev_rainbow.jpg" %></div>
+  <div class="section no-pad-bot">
+    <div class="container">
+      <div class="row center">
+        <h5 class="header col s12 light">.Ω</h5>
       </div>
     </div>
   </div>
-  <div class="parallax"><%= image_tag "/assets/images/web_dev_rainbow.jpg" %></div>
 </div>
 
-  <div class="container">
-      <div class="section">
+<div class="container">
+  <div class="section">
 
-        <div class="row">
-          <div class="col s12 center">
-            <h3><i class="mdi-content-send brown-text"></i></h3>
-            <h4>About Us</h4>
-            <p class="left-align light">We are a team of web developers working to create our app, Develop Me.</p>
-          </div>
-        </div>
-
+    <div class="row">
+      <div class="col s12 center">
+        <h3><i class="mdi-content-send brown-text"></i></h3>
+        <h4>About Us</h4>
+        <p class="left-align light">We are a team of web developers working to create our app, Develop Me.</p>
       </div>
     </div>
 
-    <div class="container">
-      <div class="section">
-          <!-- This the Icon Section -->
-        <div class="row">
-          <div class="col s12 m4">
-            <div class="icon-block">
-              <h2 class="center light-blue-text"> <i class="material-icons">flash_on</i> </h2>
-              <h5 class="center">Get Answers from Web Developers</h5>
-              <p class="light">We created a platform for you to be able to ask people in the field specific technical or career related questions with an application that allows you to connect with a community of professionals in the field. Additionally, we created an application that allows a soother experience for developers who need their questions answered.</p>
-            </div>
-          </div>
-          <div class="col s12 m4">
-            <div class="icon-block">
-            <h2 class="center light-blue-text">
-              <i class="material-icons">group</i>
-            </h2>
-            <h5 class="center">User Experience Focused</h5>
-            <p class="light">
-              By utilizing elements and principles of Web Development, we were able to create a platform that allows for developers to connect with each other in an easy to use application.
-            </p>
-            </div>
-          </div>
+  </div>
+</div>
 
-          <div class="col s12 m4">
-            <div class="icon-block"></div>
-            <h2 class="center light-blue-text">
-              <i class="material-icons">settings</i>
-            </h2>
-            <h5 class="center">Easy to work with </h5>
-            <p class="light">
-              We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.
-            </p>
-          </div>
+<div class="container">
+  <div class="section">
+      <!-- This the Icon Section -->
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center light-blue-text"> <i class="material-icons">flash_on</i> </h2>
+          <h5 class="center">Get Answers from Web Developers</h5>
+          <p class="light">We created a platform for you to be able to ask people in the field specific technical or career related questions with an application that allows you to connect with a community of professionals in the field. Additionally, we created an application that allows a soother experience for developers who need their questions answered.</p>
         </div>
       </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+        <h2 class="center light-blue-text">
+          <i class="material-icons">group</i>
+        </h2>
+        <h5 class="center">User Experience Focused</h5>
+        <p class="light">
+          By utilizing elements and principles of Web Development, we were able to create a platform that allows for developers to connect with each other in an easy to use application.
+        </p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block"></div>
+        <h2 class="center light-blue-text">
+          <i class="material-icons">settings</i>
+        </h2>
+        <h5 class="center">Easy to work with </h5>
+        <p class="light">
+          We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.
+        </p>
+      </div>
     </div>
+  </div>
+</div>
 
 <div class="parallax-container">
   <div class="parallax"><%= image_tag "/assets/images/gradient.jpg" %></div>
@@ -134,7 +132,7 @@
 <h3 class="center-align">Contact Us</h3>
 <div class="row">
   <div class="col s1 m1 l3"></div>
-  <%= form_with(scope: :email, url: '/contactus', local:true, class:"col s10 m10 l6") do |form| %>
+  <%= form_with(scope: :email, url: '/contact_us', local:true, class:"col s10 m10 l6") do |form| %>
     <div class="row">
       <div class="input-field col s12 m6">
         <%= form.label :first_name %>
