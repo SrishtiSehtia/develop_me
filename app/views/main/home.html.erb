@@ -18,11 +18,11 @@
       </div>
 
       <div class="row center">
-
+      <% if !current_user %>
         <a href="/users/new" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
         <a href="/login" id="download-button" class="btn-large waves-effect waves-light orange">Log in</a>
         <br />
-
+      <% end %>
       </div>
     </div>
   </div>
