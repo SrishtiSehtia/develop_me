@@ -10,11 +10,11 @@
 * jQuery
 * font-awesome
 * jquery.validate
+* simple_paginate
 
 ***
 ## Future Development
 1. Notifiy person when their question been answered
-2. Email new user on sign up
 3. filter users on explore page
 
 ***
