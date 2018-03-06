@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :redirect_signed_in, only: [:create, :new]
   before_action :set_page, only: [:index, :show]
+
 
   def index
     @users = User.all
@@ -57,6 +59,12 @@ class UsersController < ApplicationController
 
   def set_page
     @page_number = params[:page].nil? ? 1 : params[:page].to_i
+  end
+
+  def redirect_signed_in
+    if current_user
+      redirect_to user_path(current_user)
+    end
   end
 
 end
